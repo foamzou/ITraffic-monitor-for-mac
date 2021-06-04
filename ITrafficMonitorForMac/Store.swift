@@ -10,11 +10,13 @@ import SwiftUI
 enum SharedStore {
     static let listViewModel = ListViewModel()
     static let statusDataModel = StatusDataModel()
+    static let globalModel = GlobalModel()
 }
 
 extension View {
     func withGlobalEnvironmentObjects() -> some View {
         environmentObject(SharedStore.listViewModel)
         .environmentObject(SharedStore.statusDataModel)
+        .environmentObject(SharedStore.globalModel)
     }
 }

@@ -11,6 +11,7 @@ import SwiftUI
 class Network {
     @ObservedObject var viewModel = SharedStore.listViewModel
     @ObservedObject var statusDataModel = SharedStore.statusDataModel
+    @ObservedObject var globalModel = SharedStore.globalModel
     
     func debug(_ s: String) {
         let task = Process()
@@ -27,6 +28,8 @@ class Network {
         let duration = 2
         let nettopPath = Bundle.main.path(forResource: "nettop-line", ofType: nil)!
         let task = shellPipe("\"\(nettopPath)\" -P -d -L 0 -J bytes_in,bytes_out -t external -s \(duration) -c") { [self] output in
+            tryToMakeAppSleepDeep()
+            
             let rows = output.components(separatedBy: "|SPLIT|").map { String($0) }
             
             var totalInBytes = 0
@@ -40,11 +43,34 @@ class Network {
                 return entity
             }
             DispatchQueue.main.async {
-                self.statusDataModel.update(totalInBytes: totalInBytes / duration, totalOutBytes: totalOutBytes / duration)
+                self.statusDataModel.update(totalInBytes: totalInBytes, totalOutBytes: totalOutBytes)
                 self.viewModel.updateData(newItems: entities)
             }
         }
         task.resume()
+    }
+    
+    var sleepCounter = 0
+    let MAX_COUNT = 3
+    func tryToMakeAppSleepDeep() {
+        if !globalModel.viewShowing && sleepCounter >= MAX_COUNT {
+            globalModel.isSleepDeep = true
+            if globalModel.controllerHaveBeenReleased == false {
+                print("into sleep deep, release controller")
+                DispatchQueue.main.async {
+                    AppDelegate.popover.contentViewController = nil
+                }
+                globalModel.controllerHaveBeenReleased = true
+            }
+            return
+        }
+        if sleepCounter >= MAX_COUNT {
+            sleepCounter = 0
+        }
+        if !globalModel.viewShowing {
+            sleepCounter += 1
+        }
+        globalModel.isSleepDeep = false
     }
     
     func parser(text: String, duration: Int) -> ProcessEntity? {
@@ -113,5 +139,4 @@ class Network {
 
         return task
     }
-
 }

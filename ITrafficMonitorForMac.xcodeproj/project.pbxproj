@@ -16,6 +16,7 @@
 		C4974BDC265A9112003F1EC2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4974BDB265A9112003F1EC2 /* Utils.swift */; };
 		C4974BE226624794003F1EC2 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4974BE126624794003F1EC2 /* MenuItem.swift */; };
 		C4974BF126628E21003F1EC2 /* nettop-line in Resources */ = {isa = PBXBuildFile; fileRef = C4974BF026628E21003F1EC2 /* nettop-line */; };
+		C4974BFC2663A85A003F1EC2 /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4974BFB2663A85A003F1EC2 /* GlobalModel.swift */; };
 		C4C9974E26555B3A003ADDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9974D26555B3A003ADDC2 /* AppDelegate.swift */; };
 		C4C9975026555B3A003ADDC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9974F26555B3A003ADDC2 /* ContentView.swift */; };
 		C4C9975226555B3C003ADDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C9975126555B3C003ADDC2 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		C4974BDB265A9112003F1EC2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C4974BE126624794003F1EC2 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		C4974BF026628E21003F1EC2 /* nettop-line */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "nettop-line"; sourceTree = "<group>"; };
+		C4974BFB2663A85A003F1EC2 /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
 		C4C9974A26555B3A003ADDC2 /* ITraffic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITraffic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C9974D26555B3A003ADDC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4C9974F26555B3A003ADDC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				C4974BD0265A5D57003F1EC2 /* ListViewModel.swift */,
 				C4974BD7265A8F5B003F1EC2 /* StatusDataModel.swift */,
+				C4974BFB2663A85A003F1EC2 /* GlobalModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4974BFC2663A85A003F1EC2 /* GlobalModel.swift in Sources */,
 				C4974BD4265A7378003F1EC2 /* Store.swift in Sources */,
 				C4C9975026555B3A003ADDC2 /* ContentView.swift in Sources */,
 				C4974BDC265A9112003F1EC2 /* Utils.swift in Sources */,
@@ -351,6 +355,7 @@
 				CODE_SIGN_ENTITLEMENTS = ITrafficMonitorForMac/ITrafficMonitorForMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -359,7 +364,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				PRODUCT_NAME = ITraffic;
 				SWIFT_VERSION = 5.0;
@@ -374,6 +379,7 @@
 				CODE_SIGN_ENTITLEMENTS = ITrafficMonitorForMac/ITrafficMonitorForMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -382,7 +388,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				PRODUCT_NAME = ITraffic;
 				SWIFT_VERSION = 5.0;

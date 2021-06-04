@@ -10,18 +10,21 @@ import Foundation
 class ListViewModel: ObservableObject {
 
     @Published var items: [ProcessEntity] = []
-
+    var globalModel = SharedStore.globalModel
+    var gcCounter = 0
+    
     public func updateData(newItems: [ProcessEntity]) {
-        var count = 0;
+        if shouldClearItemsForReduceSomeMemory() {
+            items.removeAll()
+        }
+
         var pid2IndexForItems = [String: Int]()
         var pidInNewItems = [String: Int]()
         for i in 0..<items.count {
-            count += 1
             pid2IndexForItems["\(items[i].pid)"] = i
         }
         
         for newItem in newItems {
-            count += 1
             let i = pid2IndexForItems["\(newItem.pid)"] ?? -1
             if i != -1 {
                 items[i].icon = newItem.icon
@@ -48,5 +51,14 @@ class ListViewModel: ObservableObject {
             }
             return lhs.name < rhs.name
         }
+    }
+    
+    public func shouldClearItemsForReduceSomeMemory() -> Bool {
+        gcCounter += 1
+        if !self.globalModel.viewShowing && gcCounter >= 50 {
+            gcCounter = 0
+            return true
+        }
+        return false
     }
 }

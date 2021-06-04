@@ -11,29 +11,30 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var popover: NSPopover!
+    static var popover: NSPopover!
     var statusBarItem: NSStatusItem!
-
+    var contentView: ContentView!
+    @ObservedObject var globalModel = SharedStore.globalModel
+    
     static func quit() {
         NSApplication.shared.terminate(self)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let contentView = ContentView()
+        self.contentView = ContentView()
         let statusBarView = AnyView(StatusBarView())
         let network = Network()
         
         // Create the popover
-        let popover = NSPopover()
-        popover.contentSize = NSSize(width: 320, height: 420)
-        popover.behavior = .transient
-        popover.contentViewController = NSHostingController(rootView: contentView.withGlobalEnvironmentObjects())
+        AppDelegate.popover = NSPopover()
+        AppDelegate.popover.contentSize = NSSize(width: 320, height: 420)
+        AppDelegate.popover.behavior = .transient
+//        popover.contentViewController = NSHostingController(rootView: contentView.withGlobalEnvironmentObjects())
         
-        NSApp.activate(ignoringOtherApps: true)
+//        NSApp.activate(ignoringOtherApps: true)
         
-        self.popover = popover
-        self.popover.behavior = .transient
-        self.popover.animates = false
+        AppDelegate.popover.behavior = .transient
+        AppDelegate.popover.animates = false
         // Create the status item
         self.statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
 
@@ -52,21 +53,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     @objc func togglePopover(_ sender: AnyObject?) {
+        print("click")
+        self.globalModel.viewShowing = true
+        NSApp.activate(ignoringOtherApps: true)
+        
         if let button = self.statusBarItem.button {
-            if self.popover.isShown {
-                self.popover.performClose(sender)
+            if AppDelegate.popover.isShown {
+                AppDelegate.popover.performClose(sender)
             } else {
-                self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-                self.popover.contentViewController?.view.viewDidMoveToWindow()
-                self.popover.contentViewController?.view.window?.becomeKey()
-                self.popover.contentViewController?.view.window?.makeKey()
+                if globalModel.controllerHaveBeenReleased == true {
+                    print("new controller")
+                    AppDelegate.popover.contentViewController = NSHostingController(rootView: self.contentView.withGlobalEnvironmentObjects())
+                }
+                
+                AppDelegate.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                AppDelegate.popover.contentViewController?.view.viewDidMoveToWindow()
+                AppDelegate.popover.contentViewController?.view.window?.becomeKey()
+                AppDelegate.popover.contentViewController?.view.window?.makeKey()
+                
+                globalModel.controllerHaveBeenReleased = false
             }
         }
+    }
+    
+    func applicationWillResignActive(_ aNotification: Notification)
+    {
+        print("lost focus")
+        self.globalModel.viewShowing = false
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         print("applicationWillTerminate")
     }
-
 
 }

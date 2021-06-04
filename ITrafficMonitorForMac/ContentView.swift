@@ -16,7 +16,7 @@ struct ContentView: View {
 
             HStack {
                 Image("Itraffic-logo-text").resizable().padding(.leading, 6.02).frame(width: 89.39, height: 20) // origin: 1104 * 247
-                Text("v0.1.0").foregroundColor(Color.gray).font(.system(size: 11, weight: .regular))
+                Text("v0.1.1").foregroundColor(Color.gray).font(.system(size: 11, weight: .regular))
                 Spacer()
                 MenuItem(id: "menu.github", text: "Github", action: {
                     NSWorkspace.shared.open(URL(string: "https://github.com/foamzou/ITraffic-monitor-for-mac")!)
@@ -42,9 +42,11 @@ struct ProcessRow: View {
         return HStack(spacing: 0) {
             Image(nsImage: (appInfo?.icon)!).frame(width: 16, height: 16)
             Text(appInfo?.name ?? processEntity.name).padding(3.0).frame(width: 150, height: 14, alignment: .leading).font(.system(size: 12))
-            Image("Up").resizable().frame(width: 16, height: 16)
+            
+            Text("↑").frame(width: 16, height: 16).foregroundColor(.gray)
             Text(formatBytes(bytes: processEntity.outBytes)).frame(width: 90, height: 14, alignment: .leading).font(.system(size: 12))
-            Image("Down").resizable().frame(width: 16, height: 16)
+            
+            Text("↓").frame(width: 16, height: 16).foregroundColor(.gray)
             Text(formatBytes(bytes: processEntity.inBytes)).frame(width: 90, height: 14, alignment: .leading).font(.system(size: 12))
         }
 
