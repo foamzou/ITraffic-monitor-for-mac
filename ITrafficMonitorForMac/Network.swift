@@ -51,7 +51,7 @@ class Network {
     }
     
     var sleepCounter = 0
-    let MAX_COUNT = 3
+    let MAX_COUNT = 30
     func tryToMakeAppSleepDeep() {
         if !globalModel.viewShowing && sleepCounter >= MAX_COUNT {
             globalModel.isSleepDeep = true

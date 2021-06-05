@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = SharedStore.listViewModel
+    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     
     var body: some View {
         return VStack {
@@ -16,20 +17,20 @@ struct ContentView: View {
 
             HStack {
                 Image("Itraffic-logo-text").resizable().padding(.leading, 6.02).frame(width: 89.39, height: 20) // origin: 1104 * 247
-                Text("v0.1.1").foregroundColor(Color.gray).font(.system(size: 11, weight: .regular))
+                Text("v\(appVersion)").foregroundColor(Color.gray).font(.system(size: 11, weight: .regular))
                 Spacer()
                 MenuItem(id: "menu.github", text: "Github", action: {
                     NSWorkspace.shared.open(URL(string: "https://github.com/foamzou/ITraffic-monitor-for-mac")!)
                 }).padding([.trailing], 10)
                 MenuItem(id: "menu.quit", text: "Quit", action: AppDelegate.quit).padding([.trailing], 30)
-            }.frame(width: 380)
+            }.frame(width: 350)
             
             List(0..<viewModel.items.count, id: \.self) { index in
                 ProcessRow(processEntity: self.viewModel.items[index])
             }
-            .frame(width: 380, height: 420)
+            .frame(width: 350, height: 420)
             .padding([.top], -3)
-        }.background(Color.white)
+        }.background(Color("ContentBGColor"))
 
     }
 }
@@ -41,13 +42,13 @@ struct ProcessRow: View {
         let appInfo = getAppInfo(pid: processEntity.pid, name: processEntity.name)
         return HStack(spacing: 0) {
             Image(nsImage: (appInfo?.icon)!).frame(width: 16, height: 16)
-            Text(appInfo?.name ?? processEntity.name).padding(3.0).frame(width: 150, height: 14, alignment: .leading).font(.system(size: 12))
+            Text(appInfo?.name ?? processEntity.name).padding(3.0).frame(width: 138, height: 14, alignment: .leading).font(.system(size: 12))
             
             Text("↑").frame(width: 16, height: 16).foregroundColor(.gray)
-            Text(formatBytes(bytes: processEntity.outBytes)).frame(width: 90, height: 14, alignment: .leading).font(.system(size: 12))
+            Text(formatBytes(bytes: processEntity.outBytes)).frame(width: 80, height: 14, alignment: .leading).font(.system(size: 12))
             
             Text("↓").frame(width: 16, height: 16).foregroundColor(.gray)
-            Text(formatBytes(bytes: processEntity.inBytes)).frame(width: 90, height: 14, alignment: .leading).font(.system(size: 12))
+            Text(formatBytes(bytes: processEntity.inBytes)).frame(width: 80, height: 14, alignment: .leading).font(.system(size: 12))
         }
 
     }
