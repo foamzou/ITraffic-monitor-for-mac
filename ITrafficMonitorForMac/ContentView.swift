@@ -28,8 +28,11 @@ struct ContentView: View {
             List(0..<viewModel.items.count, id: \.self) { index in
                 ProcessRow(processEntity: self.viewModel.items[index])
             }
-            .frame(width: 350, height: 420)
+            .frame(width: 350, height: 420, alignment: .leading)
             .padding([.top], -3)
+            .listStyle(PlainListStyle())
+            
+            
         }.background(Color("ContentBGColor"))
 
     }
@@ -41,14 +44,14 @@ struct ProcessRow: View {
     var body: some View {
         let appInfo = getAppInfo(pid: processEntity.pid, name: processEntity.name)
         return HStack(spacing: 0) {
-            Image(nsImage: (appInfo?.icon)!).frame(width: 16, height: 16)
-            Text(appInfo?.name ?? processEntity.name).padding(3.0).frame(width: 138, height: 14, alignment: .leading).font(.system(size: 12))
+            Image(nsImage: (appInfo?.icon)!).resizable().frame(width: 16, height: 16, alignment: .leading)
+            Text(appInfo?.name ?? processEntity.name).padding(7.0).frame(width: 150, height: 14, alignment: .leading).font(.system(size: 12))
             
             Text("↑").frame(width: 16, height: 16).foregroundColor(.gray)
-            Text(formatBytes(bytes: processEntity.outBytes)).frame(width: 80, height: 14, alignment: .leading).font(.system(size: 12))
+            Text(formatBytes(bytes: processEntity.outBytes)).frame(width: 66, height: 14, alignment: .leading).font(.system(size: 12))
             
             Text("↓").frame(width: 16, height: 16).foregroundColor(.gray)
-            Text(formatBytes(bytes: processEntity.inBytes)).frame(width: 80, height: 14, alignment: .leading).font(.system(size: 12))
+            Text(formatBytes(bytes: processEntity.inBytes)).frame(width: 66, height: 14, alignment: .leading).font(.system(size: 12))
         }
 
     }
