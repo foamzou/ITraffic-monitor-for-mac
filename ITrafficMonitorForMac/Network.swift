@@ -83,8 +83,10 @@ class Network {
 
         let nameAndPid = item[0].split(separator: ".")
         let pid = nameAndPid[nameAndPid.count - 1]
+        var name = nameAndPid
+        name.removeLast()
 
-        return ProcessEntity(pid: Int(pid) ?? 0, name: String(nameAndPid[0]), inBytes: inBytes, outBytes: outBytes)
+        return ProcessEntity(pid: Int(pid) ?? 0, name: name.joined(separator: "."), inBytes: inBytes, outBytes: outBytes)
     }
 
     @discardableResult
