@@ -355,7 +355,7 @@
 				CODE_SIGN_ENTITLEMENTS = ITrafficMonitorForMac/ITrafficMonitorForMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -364,7 +364,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				PRODUCT_NAME = ITraffic;
 				SWIFT_VERSION = 5.0;
@@ -379,7 +379,7 @@
 				CODE_SIGN_ENTITLEMENTS = ITrafficMonitorForMac/ITrafficMonitorForMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -388,7 +388,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				PRODUCT_NAME = ITraffic;
 				SWIFT_VERSION = 5.0;

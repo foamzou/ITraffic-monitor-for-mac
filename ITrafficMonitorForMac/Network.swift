@@ -99,7 +99,6 @@ class Network {
         task.executableURL = URL(fileURLWithPath: "/bin/bash")
         task.arguments = ["-c"] + args
 
-        var firstLoad = true
         var buffer = Data()
         let outHandle = pipe.fileHandleForReading
         var str = ""
@@ -112,14 +111,9 @@ class Network {
                 str = String(data: buffer, encoding: String.Encoding.utf8) ?? ""
                 if str.last?.isNewline == true {
                     buffer.removeAll()
-                    // There is wrong info when first load, skip it
-                    if (firstLoad) {
-                        firstLoad = false
-                    } else {
-                        onData?(str)
-                    }
+                    onData?(str)
                 }
-                outHandle.waitForDataInBackgroundAndNotify() // todo memory leak here. Maybe should restart the sub-process in a while
+                outHandle.waitForDataInBackgroundAndNotify() // todo it seems that memory leak here. Not sure how to fix it now.
             } else {
                 buffer.removeAll()
             }
