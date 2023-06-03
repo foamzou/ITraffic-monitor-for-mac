@@ -158,7 +158,7 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					C4C9974926555B3A003ADDC2 = {
 						CreatedOnToolsVersion = 12.1.1;
@@ -353,9 +353,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ITrafficMonitorForMac/ITrafficMonitorForMac.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -364,7 +365,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				PRODUCT_NAME = ITraffic;
 				SWIFT_VERSION = 5.0;
@@ -377,9 +378,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ITrafficMonitorForMac/ITrafficMonitorForMac.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -388,7 +390,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				PRODUCT_NAME = ITraffic;
 				SWIFT_VERSION = 5.0;

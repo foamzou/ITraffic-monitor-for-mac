@@ -64,7 +64,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if globalModel.controllerHaveBeenReleased == true {
                     print("new controller")
                     AppDelegate.popover.contentViewController = NSHostingController(rootView: self.contentView.withGlobalEnvironmentObjects())
+                    AppDelegate.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY) // to avoid the child windows could not be create in the first time
                 }
+                
+                if let parentWindow = NSApp.windows.first,
+                   let popoverVCWindow = AppDelegate.popover.contentViewController?.view.window,
+                   let childWindows = parentWindow.childWindows {
+                    if !childWindows.contains(popoverVCWindow) {
+                        parentWindow.addChildWindow(popoverVCWindow, ordered: .above)
+                    }
+                } else {
+                    print("Failed to add child window")
+                }
+
                 
                 AppDelegate.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 AppDelegate.popover.contentViewController?.view.viewDidMoveToWindow()
