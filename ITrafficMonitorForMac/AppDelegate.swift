@@ -41,11 +41,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = self.statusBarItem.button {
             button.action = #selector(togglePopover(_:))
             let view = NSHostingView(rootView: statusBarView)
-            view.setFrameSize(NSSize(width: 67, height: NSStatusBar.system.thickness))
+            view.setFrameSize(NSSize(width: 57, height: NSStatusBar.system.thickness))
             
             button.subviews.forEach { $0.removeFromSuperview() }
             button.addSubview(view)
-            self.statusBarItem.length = 67
+            self.statusBarItem.length = 57
         }
         
         network.startListenNetwork()

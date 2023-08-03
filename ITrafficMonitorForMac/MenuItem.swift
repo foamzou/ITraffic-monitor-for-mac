@@ -15,7 +15,7 @@ struct MenuItem: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 13, weight: .regular))
+            .font(.system(size: 12, weight: .regular))
             .foregroundColor(.gray)
             .contentShape(Rectangle())
             .animation(.none)
