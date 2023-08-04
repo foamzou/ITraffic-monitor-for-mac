@@ -11,12 +11,12 @@ import Cocoa
 func formatBytes(bytes: Int) -> String {
     let kbyte = Float(bytes) / 1024
     if kbyte <= 0 {
-        return "0 K/s"
+        return "0 KB/s"
     }
     if kbyte < 1024 {
-        return String(format:"%.1f K/s", kbyte)
+        return String(format:"%.1f KB/s", kbyte)
     }
-    return String(format:"%.1f M/s", kbyte / 1024)
+    return String(format:"%.1f MB/s", kbyte / 1024)
 }
 
 struct AppInfo {
