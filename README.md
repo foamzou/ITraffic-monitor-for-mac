@@ -22,3 +22,7 @@ One of the following way is fine
 
 ## Thanks
 - [eul](https://github.com/gao-sun/eul): Use some code of the project Coz I'm a newer of swift
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=foamzou/ITraffic-monitor-for-mac&type=Date)](https://star-history.com/#foamzou/ITraffic-monitor-for-mac&Date)
