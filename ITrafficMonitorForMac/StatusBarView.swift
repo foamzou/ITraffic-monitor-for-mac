@@ -11,19 +11,31 @@ struct StatusBarView: View {
     @ObservedObject var statusDataModel = SharedStore.statusDataModel
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             VStack(spacing: 0) {
-                Spacer().frame(width: 0, height: 1, alignment: .trailing)
+                Spacer().frame(width: 0, height: 1)
+                
                 HStack() {
-                    Text("↑"+formatBytes(bytes: statusDataModel.totalOutBytes))
+                    Text("↗")
+                        .font(.system(size: 9))
+                    Text(formatBytes(bytes:statusDataModel.totalOutBytes))
+                        .font(.system(size: 9))
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.trailing)
+                        .padding(.leading, -8.0)
+                        .frame(width: 45)
+                }.frame(width:60, height: 10, alignment: .trailing)
+                HStack() {
+                    Text("↙")
                         .font(.system(size: 9))
                         .multilineTextAlignment(.trailing)
-                }.frame(width:57, height: 12, alignment: .leading)
-                HStack {
-                    Text("↓"+formatBytes(bytes: statusDataModel.totalInBytes))
+                    Text(formatBytes(bytes:statusDataModel.totalInBytes))
                         .font(.system(size: 9))
+                        .fontWeight(.medium)
                         .multilineTextAlignment(.trailing)
-                }.padding(.top, -1.5).frame(width:57, height: 12, alignment: .leading)
+                        .padding(.leading, -8.0)
+                        .frame(width: 45.0)
+                }.padding(.top, -1.5).frame(width:60, height: 10, alignment: .trailing)
             }
         }
     }
@@ -32,7 +44,8 @@ struct StatusBarView: View {
 struct StatusBarView_Previews: PreviewProvider {
     static var previews: some View {
         StatusBarView()
-            .previewLayout(.sizeThatFits)
+            .environment(\.sizeCategory, .small)
+            
             
             
             
