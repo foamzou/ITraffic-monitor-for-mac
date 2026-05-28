@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static var popover: NSPopover!
     var statusBarItem: NSStatusItem!
     var contentView: ContentView!
+    var network: Network!
     @ObservedObject var globalModel = SharedStore.globalModel
     
     static func quit() {
@@ -23,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.contentView = ContentView()
         let statusBarView = AnyView(StatusBarView())
-        let network = Network()
+        self.network = Network()
         
         // Create the popover
         AppDelegate.popover = NSPopover()
@@ -47,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.statusBarItem.length = 60
         }
         
-        network.startListenNetwork()
+        self.network.startListenNetwork()
     }
 
     

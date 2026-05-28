@@ -17,6 +17,13 @@ One of the following way is fine
    - Install: `brew install itraffic`
    - Update: `brew update && brew upgrade itraffic`
 
+## Development (XcodeGen)
+This project is generated from `project.yml` via XcodeGen.
+
+1. Install XcodeGen: `brew install xcodegen`
+2. Generate the Xcode project: `xcodegen generate`
+3. Open `ITrafficMonitorForMac.xcodeproj`
+
 ## Snapshot
 <img src="./snapshot.png" width="600" />
 
