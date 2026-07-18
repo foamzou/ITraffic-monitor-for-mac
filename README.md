@@ -18,10 +18,10 @@ Bytetally Free goes far beyond iTraffic's real-time list. It adds a native dashb
 
 <p align="center">
   <a href="https://bytetally.app/">
-    <img src="./docs/images/bytetally-overview.png" width="920" alt="Bytetally Overview showing month-to-date network usage, a seven-day trend, and top apps" />
+    <img src="https://bytetally.app/assets/shot-hero.png" width="920" alt="Bytetally traffic history showing network usage over time and the apps responsible" />
   </a>
   <br />
-  <sub>Bytetally Overview — month-to-date usage, 7-day trend, and monthly top apps are included in Free. The unusual-upload alert shown above is a Pro feature.</sub>
+  <sub>Bytetally turns raw network activity into a clear timeline and shows which apps are responsible. Some features shown require Pro.</sub>
 </p>
 
 ### Choose the version that fits you
