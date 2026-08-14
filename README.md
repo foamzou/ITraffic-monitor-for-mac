@@ -160,4 +160,4 @@ See [LICENSE](./LICENSE).
 
 ## Star history
 
-[![Star History Chart](https://api.star-history.com/svg?repos=foamzou/ITraffic-monitor-for-mac&type=Date)](https://star-history.com/#foamzou/ITraffic-monitor-for-mac&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=foamzou/ITraffic-monitor-for-mac&type=Date)](https://star-history.dera.page/#foamzou/ITraffic-monitor-for-mac&Date)
