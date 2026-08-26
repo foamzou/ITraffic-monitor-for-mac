@@ -22,10 +22,11 @@ struct ContentView: View {
                     .foregroundColor(.secondary)
                     .font(.system(size: 11, weight: .regular))
                 Spacer()
-                // Sibling app, not an upsell surface: same grey 12pt link style as
-                // Github, no badge, no popup, no row in the list. Someone who has
-                // no interest reads it once and never notices it again.
-                MenuItem(id: "menu.bytetally", text: "Bytetally", action: {
+                // Sibling app, not an upsell surface: a single glyph tucked into
+                // the existing link row — no badge, no popup on launch, nothing
+                // added to the process list. The tooltip carries the explanation
+                // so the header stays a plain row of links.
+                MenuIconItem(id: "menu.bytetally", glyph: "✨", action: {
                     NSWorkspace.shared.open(URL(string: "https://bytetally.app/?utm_source=itraffic&utm_medium=app")!)
                 })
                 .tooltipIfAvailable("Bytetally — the full edition from the same developer: usage history, charts and per-app limits")
