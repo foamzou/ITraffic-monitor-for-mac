@@ -107,9 +107,14 @@ live in this public repo's secrets.
   not, and every row rendered double for three months. If you find yourself
   adding a `/ interval` anywhere else, something is already wrong.
 
-- **The app makes no network requests.** It is a network monitor; anything it
-  sends shows up in its own process list, and users will notice. If an update
-  check is ever added, it must fire on an explicit click, never on a timer.
+- **The app makes exactly one network request, and only when clicked.** Checking
+  for updates (`Service/UpdateChecker.swift`) hits the GitHub releases API when
+  the user clicks the version number in the header — never on a timer, never at
+  launch, and there is deliberately no "check automatically" preference to
+  forget about. The reason is structural: iTraffic lists the network activity of
+  every process including its own, so a background poll appears to users as
+  unexplained traffic from the one tool whose job is to explain traffic. Keep
+  any future network work on the same rule.
 
 - **`.help(_:)` is macOS 11+** while the deployment target is 10.15. Guard new
   API with `#available` rather than raising the target.

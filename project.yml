@@ -42,14 +42,14 @@ targets:
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Automatic
         COMBINE_HIDPI_IMAGES: YES
-        CURRENT_PROJECT_VERSION: 8
+        CURRENT_PROJECT_VERSION: 9
         DEVELOPMENT_ASSET_PATHS: "\"ITrafficMonitorForMac/Preview Content\""
         ENABLE_PREVIEWS: YES
         INFOPLIST_FILE: ITrafficMonitorForMac/Info.plist
         LD_RUNPATH_SEARCH_PATHS:
           - "$(inherited)"
           - "@executable_path/../Frameworks"
-        MARKETING_VERSION: 0.2.1
+        MARKETING_VERSION: 0.2.2
         PRODUCT_BUNDLE_IDENTIFIER: com.foamzou.ITrafficMonitorForMac
         SWIFT_VERSION: 5.0
       configs:

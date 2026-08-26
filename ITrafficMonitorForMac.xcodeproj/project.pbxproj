@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		110910FF9B56F77D57F2BFCE /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022369AA8C7A1C5D91EBF94 /* GlobalModel.swift */; };
 		18C1A7695438BEC38408C768 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B401534AD37D838AA9B5A60 /* Preview Assets.xcassets */; };
+		1CBCEFF9FF0A22FCEC140650 /* UpdateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC855B5D833970A7BC835D /* UpdateStatusView.swift */; };
 		351C3DAE423EA025FD8CD086 /* StatusDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9C6FA41F91307CC26CC82 /* StatusDataModel.swift */; };
 		3CA4E9B67FC3BEF7F53DE411 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF572DB43FB64590A52C78 /* StatusBarView.swift */; };
+		40356C2042520BF14F2B9016 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5069BAB2EEC85E1350B9A /* UpdateChecker.swift */; };
 		403DD76556F421C4383180FB /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE4AB076FAF20A640BD23F /* Network.swift */; };
 		47BB0E5A5A06A259F5A60930 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D087345A4276425E5C66002 /* MenuItem.swift */; };
 		47E3ABDEBFE7000CE5F116FC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748FB46B5B1D40583CCBFC28 /* Store.swift */; };
@@ -34,12 +36,14 @@
 		748FB46B5B1D40583CCBFC28 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		7D087345A4276425E5C66002 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		8DC67E0DE60F9255C3A54E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7BC855B5D833970A7BC835D /* UpdateStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStatusView.swift; sourceTree = "<group>"; };
 		B30BFFD61518831774A91BFE /* NettopRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NettopRunner.swift; sourceTree = "<group>"; };
 		B4DE4AB076FAF20A640BD23F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B7BF572DB43FB64590A52C78 /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
 		CB270FCE9653D5465B9967DE /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		CDA9C6FA41F91307CC26CC82 /* StatusDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDataModel.swift; sourceTree = "<group>"; };
 		CFEBA748A68F38F9678D3C65 /* ProcessEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessEntity.swift; sourceTree = "<group>"; };
+		E8B5069BAB2EEC85E1350B9A /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
 		F7073581DC3527238C3C97F5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				B30BFFD61518831774A91BFE /* NettopRunner.swift */,
+				E8B5069BAB2EEC85E1350B9A /* UpdateChecker.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 				CFEBA748A68F38F9678D3C65 /* ProcessEntity.swift */,
 				B7BF572DB43FB64590A52C78 /* StatusBarView.swift */,
 				748FB46B5B1D40583CCBFC28 /* Store.swift */,
+				A7BC855B5D833970A7BC835D /* UpdateStatusView.swift */,
 				3D30F89C22ACDFD9102801CD /* Utils.swift */,
 				93A1FCAC2059C9BA4F8137C5 /* Base.lproj */,
 				1084C47DA714E5ED8C50E54D /* Model */,
@@ -197,6 +203,8 @@
 				3CA4E9B67FC3BEF7F53DE411 /* StatusBarView.swift in Sources */,
 				351C3DAE423EA025FD8CD086 /* StatusDataModel.swift in Sources */,
 				47E3ABDEBFE7000CE5F116FC /* Store.swift in Sources */,
+				40356C2042520BF14F2B9016 /* UpdateChecker.swift in Sources */,
+				1CBCEFF9FF0A22FCEC140650 /* UpdateStatusView.swift in Sources */,
 				B2D8BF451CC944FE4FFF61CD /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +277,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -279,7 +287,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -295,7 +303,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"ITrafficMonitorForMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ITrafficMonitorForMac/Info.plist;
@@ -304,7 +312,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foamzou.ITrafficMonitorForMac;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;

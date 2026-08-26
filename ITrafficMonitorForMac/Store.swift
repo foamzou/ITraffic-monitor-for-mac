@@ -11,6 +11,8 @@ enum SharedStore {
     static let listViewModel = ListViewModel()
     static let statusDataModel = StatusDataModel()
     static let globalModel = GlobalModel()
+    // Outlives ContentView, which is torn down entirely when the popover sleeps.
+    static let updateChecker = UpdateChecker()
 }
 
 extension View {

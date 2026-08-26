@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = SharedStore.listViewModel
-    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 
     var body: some View {
         VStack(spacing: 0) {
@@ -18,9 +17,10 @@ struct ContentView: View {
                 Image("Itraffic-logo-text")
                     .resizable()
                     .frame(width: 89.39, height: 20)
-                Text("v\(appVersion)")
-                    .foregroundColor(.secondary)
-                    .font(.system(size: 11, weight: .regular))
+                // The version number doubles as the update entry point — clicking
+                // the thing that states your version is where people already look,
+                // and it costs the header no extra element.
+                UpdateStatusView()
                 Spacer()
                 // Sibling app, not an upsell surface: a single glyph tucked into
                 // the existing link row — no badge, no popup on launch, nothing
