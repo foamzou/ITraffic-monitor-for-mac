@@ -122,6 +122,10 @@ macOS 10.15 Catalina or later.
 
 ## Install & update
 
+Builds from v0.2.1 on are signed with a Developer ID and notarised by Apple, so
+they open on a double-click — no right-click → Open, no trip through System
+Settings.
+
 Choose either option:
 
 1. Download the ZIP from the [latest GitHub release](https://github.com/foamzou/ITraffic-monitor-for-mac/releases/latest).
@@ -145,6 +149,25 @@ This project is generated from `project.yml` with [XcodeGen](https://github.com/
 1. Install XcodeGen: `brew install xcodegen`
 2. Generate the project: `xcodegen generate`
 3. Open `ITrafficMonitorForMac.xcodeproj`
+
+The checked-in signing identity is ad-hoc (`-`), so a fresh clone builds without
+any certificate.
+
+## Cutting a release
+
+`scripts/release.sh` does the whole thing — archive with the Developer ID
+certificate, export, notarise, staple, re-zip, verify with Gatekeeper on a
+quarantined copy, then publish the GitHub release and print the Homebrew bump
+command. Bump `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in
+`project.yml`, write `changelog/<version>.md`, then:
+
+```bash
+scripts/release.sh --dry-run   # build + notarise + verify, no publish
+scripts/release.sh             # the real thing
+```
+
+It needs a `Developer ID Application` certificate and notarisation credentials
+in `ASC_KEY_ID` / `ASC_ISSUER_ID` / `ASC_PRIVATE_KEY_PATH`.
 
 ## iTraffic screenshot
 

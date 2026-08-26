@@ -42,16 +42,23 @@ targets:
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Automatic
         COMBINE_HIDPI_IMAGES: YES
-        CURRENT_PROJECT_VERSION: 7
+        CURRENT_PROJECT_VERSION: 8
         DEVELOPMENT_ASSET_PATHS: "\"ITrafficMonitorForMac/Preview Content\""
         ENABLE_PREVIEWS: YES
         INFOPLIST_FILE: ITrafficMonitorForMac/Info.plist
         LD_RUNPATH_SEARCH_PATHS:
           - "$(inherited)"
           - "@executable_path/../Frameworks"
-        MARKETING_VERSION: 0.2.0
+        MARKETING_VERSION: 0.2.1
         PRODUCT_BUNDLE_IDENTIFIER: com.foamzou.ITrafficMonitorForMac
         SWIFT_VERSION: 5.0
+      configs:
+        # Notarisation requires the hardened runtime. Release only — on Debug it
+        # would block the debugger unless Xcode injects get-task-allow.
+        # CODE_SIGN_IDENTITY stays ad-hoc ("-") above so a fresh `git clone` still
+        # builds; scripts/release.sh overrides it with the Developer ID cert.
+        Release:
+          ENABLE_HARDENED_RUNTIME: YES
 
 schemes:
   ITrafficMonitorForMac:

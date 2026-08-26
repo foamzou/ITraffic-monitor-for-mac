@@ -1,0 +1,33 @@
+name: Build
+
+# Catches "it doesn't even compile" before it reaches main. Signing and
+# notarisation stay on a local machine (see scripts/release.sh) so the
+# Developer ID certificate never has to live in this public repo's secrets.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate project
+        run: xcodegen generate
+
+      - name: Build (unsigned)
+        run: |
+          xcodebuild build \
+            -project ITrafficMonitorForMac.xcodeproj \
+            -scheme ITrafficMonitorForMac \
+            -configuration Release \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            ENABLE_HARDENED_RUNTIME=NO
