@@ -34,21 +34,17 @@ class Network {
     private func handleFrame(_ lines: [String]) {
         tryToMakeAppSleepDeep()
 
-        var totalInBytes = 0
-        var totalOutBytes = 0
+        var totalInRate = 0
+        var totalOutRate = 0
         let entities: [ProcessEntity] = lines.compactMap { line -> ProcessEntity? in
             guard let entity = parser(text: line) else { return nil }
-            totalInBytes += entity.inBytes
-            totalOutBytes += entity.outBytes
+            totalInRate += entity.inBytesPerSec
+            totalOutRate += entity.outBytesPerSec
             return entity
         }
 
-        // parser stores raw delta bytes; convert to bytes/sec for the status bar.
-        let inRate  = totalInBytes  / interval
-        let outRate = totalOutBytes / interval
-
         DispatchQueue.main.async {
-            self.statusDataModel.update(totalInBytes: inRate, totalOutBytes: outRate)
+            self.statusDataModel.update(totalInBytesPerSec: totalInRate, totalOutBytesPerSec: totalOutRate)
             self.viewModel.updateData(newItems: entities)
         }
     }
@@ -76,14 +72,21 @@ class Network {
         globalModel.isSleepDeep = false
     }
 
+    /// nettop runs in delta mode (`-d`) on an `interval`-second sample, so every
+    /// frame reports the bytes moved across that whole window. Normalise to
+    /// bytes/sec right here, at the single point where raw nettop numbers enter
+    /// the app — the status bar and the process list then read the same unit.
+    ///
+    /// Do not move this divide "up" to the aggregation point: 0.2.0 did exactly
+    /// that, and the popover list kept rendering raw 2-second deltas, i.e. double
+    /// the menu bar's rate (issue #28).
     func parser(text: String) -> ProcessEntity? {
         let item = text.split(separator: ",")
         if item.count < 3 {
             return nil
         }
-        // Store raw delta bytes; rate is computed once at the aggregation point.
-        let inBytes  = Int(item[1]) ?? 0
-        let outBytes = Int(item[2]) ?? 0
+        let inBytesPerSec  = (Int(item[1]) ?? 0) / interval
+        let outBytesPerSec = (Int(item[2]) ?? 0) / interval
 
         let nameAndPid = item[0].split(separator: ".")
         guard nameAndPid.count >= 2 else {
@@ -96,8 +99,8 @@ class Network {
         return ProcessEntity(
             pid: Int(pid) ?? 0,
             name: name.joined(separator: "."),
-            inBytes: inBytes,
-            outBytes: outBytes
+            inBytesPerSec: inBytesPerSec,
+            outBytesPerSec: outBytesPerSec
         )
     }
 }

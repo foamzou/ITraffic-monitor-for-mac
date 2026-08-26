@@ -37,7 +37,7 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     let maxTotal = viewModel.items
-                        .map { $0.inBytes + $0.outBytes }
+                        .map { $0.inBytesPerSec + $0.outBytesPerSec }
                         .max() ?? 0
                     ForEach(viewModel.items) { entity in
                         ProcessRow(processEntity: entity, maxTotal: maxTotal)
@@ -59,11 +59,11 @@ struct ProcessRow: View {
 
     var body: some View {
         let appInfo = getAppInfo(pid: processEntity.pid, name: processEntity.name)
-        let inActive  = processEntity.inBytes  > 0
-        let outActive = processEntity.outBytes > 0
+        let inActive  = processEntity.inBytesPerSec  > 0
+        let outActive = processEntity.outBytesPerSec > 0
         let anyActive = inActive || outActive
 
-        let total = processEntity.inBytes + processEntity.outBytes
+        let total = processEntity.inBytesPerSec + processEntity.outBytesPerSec
         let totalRatio = maxTotal > 0 ? CGFloat(total) / CGFloat(maxTotal) : 0
 
         HStack(spacing: 8) {
@@ -84,7 +84,7 @@ struct ProcessRow: View {
                 Text("↓")
                     .font(.system(size: 10))
                     .foregroundColor(inActive ? .secondary : Color.secondary.opacity(0.35))
-                Text(formatBytesCompact(bytes: processEntity.inBytes))
+                Text(formatBytesCompact(bytes: processEntity.inBytesPerSec))
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundColor(inActive ? .primary : Color.secondary.opacity(0.35))
                     .frame(width: 44, alignment: .trailing)
@@ -95,7 +95,7 @@ struct ProcessRow: View {
                 Text("↑")
                     .font(.system(size: 10))
                     .foregroundColor(outActive ? .secondary : Color.secondary.opacity(0.35))
-                Text(formatBytesCompact(bytes: processEntity.outBytes))
+                Text(formatBytesCompact(bytes: processEntity.outBytesPerSec))
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundColor(outActive ? .primary : Color.secondary.opacity(0.35))
                     .frame(width: 44, alignment: .trailing)

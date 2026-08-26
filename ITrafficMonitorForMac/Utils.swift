@@ -21,7 +21,8 @@ func formatBytes(bytes: Int) -> String {
 }
 
 /// Compact unit format for list rows: "55K", "9.1M", "1.2G", "—" for 0.
-/// `/s` is dropped — sampling cadence is implicit in the list context.
+/// Input is bytes **per second**, same unit as the menu bar; the `/s` suffix is
+/// dropped only to keep the row narrow.
 func formatBytesCompact(bytes: Int) -> String {
     if bytes <= 0 { return "—" }
     let kb = Double(bytes) / 1024

@@ -8,11 +8,13 @@
 import Foundation
 
 class StatusDataModel: ObservableObject {
-    @Published var totalInBytes: Int = 0
-    @Published var totalOutBytes: Int = 0
-    
-    public func update(totalInBytes: Int, totalOutBytes: Int) {
-        self.totalInBytes = totalInBytes
-        self.totalOutBytes = totalOutBytes
+    /// Machine-wide rate in bytes per second — the sum of every process's rate,
+    /// so the menu bar and the popover list always agree.
+    @Published var totalInBytesPerSec: Int = 0
+    @Published var totalOutBytesPerSec: Int = 0
+
+    public func update(totalInBytesPerSec: Int, totalOutBytesPerSec: Int) {
+        self.totalInBytesPerSec = totalInBytesPerSec
+        self.totalOutBytesPerSec = totalOutBytesPerSec
     }
 }

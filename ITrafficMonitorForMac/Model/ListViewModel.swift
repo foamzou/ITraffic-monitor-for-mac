@@ -29,8 +29,8 @@ class ListViewModel: ObservableObject {
             if i != -1 {
                 items[i].icon = newItem.icon
                 items[i].name = newItem.name
-                items[i].inBytes = newItem.inBytes
-                items[i].outBytes = newItem.outBytes
+                items[i].inBytesPerSec = newItem.inBytesPerSec
+                items[i].outBytesPerSec = newItem.outBytesPerSec
             } else {
                 items.append(newItem)
             }
@@ -44,10 +44,10 @@ class ListViewModel: ObservableObject {
     
     func sort(items: [ProcessEntity]) -> [ProcessEntity] {
         return items.sorted {  (lhs:ProcessEntity, rhs:ProcessEntity) in
-            let lTotalBytes = lhs.inBytes + lhs.outBytes
-            let rTotalBytes = rhs.inBytes + rhs.outBytes
-            if lTotalBytes != rTotalBytes {
-                return lTotalBytes > rTotalBytes
+            let lTotalRate = lhs.inBytesPerSec + lhs.outBytesPerSec
+            let rTotalRate = rhs.inBytesPerSec + rhs.outBytesPerSec
+            if lTotalRate != rTotalRate {
+                return lTotalRate > rTotalRate
             }
             return lhs.name < rhs.name
         }

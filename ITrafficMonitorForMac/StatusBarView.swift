@@ -18,7 +18,7 @@ struct StatusBarView: View {
                 HStack() {
                     Text("↗")
                         .font(.system(size: 9))
-                    Text(formatBytes(bytes:statusDataModel.totalOutBytes))
+                    Text(formatBytes(bytes:statusDataModel.totalOutBytesPerSec))
                         .font(.system(size: 9))
                         .fontWeight(.medium)
                         .multilineTextAlignment(.trailing)
@@ -29,7 +29,7 @@ struct StatusBarView: View {
                     Text("↙")
                         .font(.system(size: 9))
                         .multilineTextAlignment(.trailing)
-                    Text(formatBytes(bytes:statusDataModel.totalInBytes))
+                    Text(formatBytes(bytes:statusDataModel.totalInBytesPerSec))
                         .font(.system(size: 9))
                         .fontWeight(.medium)
                         .multilineTextAlignment(.trailing)
