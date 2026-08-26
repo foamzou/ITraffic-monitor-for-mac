@@ -60,6 +60,12 @@ if git rev-parse "v$VERSION" >/dev/null 2>&1; then
   exit 1
 fi
 
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "!! working tree is dirty — commit first so the tag points at what ships"
+  git status --short
+  exit 1
+fi
+
 echo "ok — signing as: $SIGN_IDENTITY"
 
 # ------------------------------------------------------------------- build ---
@@ -140,6 +146,9 @@ if $DRY_RUN; then
   say "Dry run — stopping before publish"
 else
   say "Publishing GitHub release v$VERSION"
+  # Push the commits first — a tag whose commit isn't on the remote produces a
+  # release pointing at nothing.
+  git push origin HEAD
   git tag -a "v$VERSION" -m "v$VERSION"
   git push origin "v$VERSION"
   if [[ -f "$NOTES_FILE" ]]; then
