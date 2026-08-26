@@ -22,6 +22,13 @@ struct ContentView: View {
                     .foregroundColor(.secondary)
                     .font(.system(size: 11, weight: .regular))
                 Spacer()
+                // Sibling app, not an upsell surface: same grey 12pt link style as
+                // Github, no badge, no popup, no row in the list. Someone who has
+                // no interest reads it once and never notices it again.
+                MenuItem(id: "menu.bytetally", text: "Bytetally", action: {
+                    NSWorkspace.shared.open(URL(string: "https://bytetally.app/?utm_source=itraffic&utm_medium=app")!)
+                })
+                .tooltipIfAvailable("Bytetally — the full edition from the same developer: usage history, charts and per-app limits")
                 MenuItem(id: "menu.github", text: "Github", action: {
                     NSWorkspace.shared.open(URL(string: "https://github.com/foamzou/ITraffic-monitor-for-mac")!)
                 })
