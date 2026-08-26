@@ -1,6 +1,15 @@
 # Mac file
 .DS_Store
 
+# AI agent local state.
+# AGENTS.md and its CLAUDE.md symlink are committed on purpose — they are shared
+# instructions for anyone working here. What stays out is per-machine settings
+# and session transcripts, which are the usual way a credential leaks into a
+# public repo.
+.claude/settings.local.json
+.claude/projects/
+.codex/
+
 
 # Xcode
 #
