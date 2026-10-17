@@ -13,6 +13,7 @@ enum SharedStore {
     static let globalModel = GlobalModel()
     // Outlives ContentView, which is torn down entirely when the popover sleeps.
     static let updateChecker = UpdateChecker()
+    static let launchAtLogin = LaunchAtLogin()
 }
 
 extension View {
