@@ -1,6 +1,6 @@
 name: Build
 
-# Catches "it doesn't even compile" before it reaches main. Signing and
+# Builds an unsigned test DMG. Signing and
 # notarisation stay on a local machine (see scripts/release.sh) so the
 # Developer ID certificate never has to live in this public repo's secrets.
 
@@ -22,12 +22,50 @@ jobs:
       - name: Generate project
         run: xcodegen generate
 
+      - name: Check launch-at-login compatibility
+        run: |
+          swiftc ITrafficMonitorForMac/Service/LaunchAtLogin.swift \
+            tests/LaunchAtLoginTests.swift \
+            -o "$RUNNER_TEMP/launch-at-login-tests"
+          "$RUNNER_TEMP/launch-at-login-tests"
+          swiftc -D ITRAFFIC_UNSIGNED_BUILD \
+            ITrafficMonitorForMac/Service/LaunchAtLogin.swift \
+            tests/LaunchAtLoginTests.swift \
+            -o "$RUNNER_TEMP/launch-at-login-unsigned-tests"
+          "$RUNNER_TEMP/launch-at-login-unsigned-tests"
+
       - name: Build (unsigned)
         run: |
           xcodebuild build \
             -project ITrafficMonitorForMac.xcodeproj \
             -scheme ITrafficMonitorForMac \
             -configuration Release \
+            -derivedDataPath "$RUNNER_TEMP/itraffic-build" \
+            ARCHS="arm64 x86_64" \
+            ONLY_ACTIVE_ARCH=NO \
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS='$(inherited) ITRAFFIC_UNSIGNED_BUILD' \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             ENABLE_HARDENED_RUNTIME=NO
+
+      - name: Package unsigned DMG
+        run: |
+          APP="$RUNNER_TEMP/itraffic-build/Build/Products/Release/ITraffic.app"
+          STAGING="$RUNNER_TEMP/itraffic-dmg"
+          DMG="$RUNNER_TEMP/ITraffic-unsigned.dmg"
+          lipo "$APP/Contents/MacOS/ITraffic" -verify_arch arm64 x86_64
+          mkdir -p "$STAGING"
+          ditto "$APP" "$STAGING/ITraffic.app"
+          ln -s /Applications "$STAGING/Applications"
+          hdiutil create -volname "ITraffic (unsigned)" \
+            -srcfolder "$STAGING" -format UDZO -ov "$DMG"
+          hdiutil verify "$DMG"
+
+      - name: Upload unsigned DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITraffic-unsigned-macos
+          path: ${{ runner.temp }}/ITraffic-unsigned.dmg
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14

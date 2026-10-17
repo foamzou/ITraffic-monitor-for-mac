@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = SharedStore.listViewModel
+    @ObservedObject var launchAtLogin = SharedStore.launchAtLogin
 
     var body: some View {
         VStack(spacing: 0) {
@@ -55,9 +56,43 @@ struct ContentView: View {
                 }
             }
             .frame(maxHeight: 420)
+
+            Divider()
+
+            VStack(alignment: .leading, spacing: 6) {
+                Toggle("Launch at login", isOn: Binding(
+                    get: { self.launchAtLogin.isEnabled },
+                    set: { self.launchAtLogin.setEnabled($0) }))
+                    .toggleStyle(CheckboxToggleStyle())
+                    .font(.system(size: 12))
+
+                if launchAtLogin.requiresApproval {
+                    Text("Allow iTraffic in System Settings to launch at login.")
+                        .font(.system(size: 11))
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Button("Open Login Items", action: launchAtLogin.openLoginItems)
+                        .buttonStyle(BorderlessButtonStyle())
+                        .font(.system(size: 11))
+                }
+
+                if let message = launchAtLogin.errorMessage {
+                    Text(message)
+                        .font(.system(size: 11))
+                        .foregroundColor(.red)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
         }
         .frame(width: 340)
         .background(Color("ContentBGColor"))
+        .onAppear { self.launchAtLogin.refresh() }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            self.launchAtLogin.refresh()
+        }
     }
 }
 

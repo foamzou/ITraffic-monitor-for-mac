@@ -14,6 +14,7 @@
 		3CA4E9B67FC3BEF7F53DE411 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF572DB43FB64590A52C78 /* StatusBarView.swift */; };
 		40356C2042520BF14F2B9016 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5069BAB2EEC85E1350B9A /* UpdateChecker.swift */; };
 		403DD76556F421C4383180FB /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE4AB076FAF20A640BD23F /* Network.swift */; };
+		446DE9E8918BBD6B7098E865 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A320E4D603EDE656802BD4C /* LaunchAtLogin.swift */; };
 		47BB0E5A5A06A259F5A60930 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D087345A4276425E5C66002 /* MenuItem.swift */; };
 		47E3ABDEBFE7000CE5F116FC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748FB46B5B1D40583CCBFC28 /* Store.swift */; };
 		4C5971DF435E26F48866D29B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BBF936E71BDC274DA2015 /* ContentView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		0022369AA8C7A1C5D91EBF94 /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
 		0B401534AD37D838AA9B5A60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A320E4D603EDE656802BD4C /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		3D30F89C22ACDFD9102801CD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4B40D6B010727301F2E83F30 /* ITrafficMonitorForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITrafficMonitorForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5BBF936E71BDC274DA2015 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		B04E2F28E667BBA2ADAE07F6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3A320E4D603EDE656802BD4C /* LaunchAtLogin.swift */,
 				B30BFFD61518831774A91BFE /* NettopRunner.swift */,
 				E8B5069BAB2EEC85E1350B9A /* UpdateChecker.swift */,
 			);
@@ -156,7 +159,6 @@
 				};
 			};
 			buildConfigurationList = 969B2988406CD78CE4DD735A /* Build configuration list for PBXProject "ITrafficMonitorForMac" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -166,6 +168,7 @@
 			mainGroup = 4120213D73F4C876D85E3432;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
+			productRefGroup = C7F7F27CEDA49B8A0BBE19D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -195,6 +198,7 @@
 				C17313D7F40F6AA244E2B66E /* AppDelegate.swift in Sources */,
 				4C5971DF435E26F48866D29B /* ContentView.swift in Sources */,
 				110910FF9B56F77D57F2BFCE /* GlobalModel.swift in Sources */,
+				446DE9E8918BBD6B7098E865 /* LaunchAtLogin.swift in Sources */,
 				9419659EEBE860E8E43AD67B /* ListViewModel.swift in Sources */,
 				47BB0E5A5A06A259F5A60930 /* MenuItem.swift in Sources */,
 				ED92E8103B5EA56B695BE2EE /* NettopRunner.swift in Sources */,

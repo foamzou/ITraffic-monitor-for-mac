@@ -142,6 +142,13 @@ Choose either option:
    brew upgrade itraffic
    ```
 
+The menu-bar popover includes a **Launch at login** checkbox, off by default.
+Signed builds on macOS 13 and later use the system Login Items service and
+show a link to System Settings if approval is needed. On macOS 10.15–12, and
+in unsigned CI builds, the app manages a per-user LaunchAgent. Install the app
+in a permanent location before enabling this setting; disabling it removes its
+login registration.
+
 ## Build from source
 
 This project is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen).
@@ -152,6 +159,12 @@ This project is generated from `project.yml` with [XcodeGen](https://github.com/
 
 The checked-in signing identity is ad-hoc (`-`), so a fresh clone builds without
 any certificate.
+
+The **Build** GitHub Actions workflow also uploads an `ITraffic-unsigned-macos`
+artifact containing a DMG for Apple silicon and Intel Macs. Download it from the
+run's **Artifacts** section and extract the ZIP to get `ITraffic-unsigned.dmg`.
+These test builds are unsigned and not notarised; macOS may block opening them.
+Use the published release for a signed, notarised download.
 
 ## Cutting a release
 

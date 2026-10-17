@@ -92,9 +92,10 @@ the app opens, because it never looks at notarisation. Only
 Afterwards, update the Homebrew cask with the line the script prints
 (`brew bump-cask-pr --version <v> itraffic`).
 
-CI (`.github/workflows/build.yml`) deliberately builds **unsigned**. It only
-proves the project still compiles, so the Developer ID certificate never has to
-live in this public repo's secrets.
+CI (`.github/workflows/build.yml`) deliberately builds **unsigned** and uploads
+a universal test DMG as a workflow artifact. It verifies compilation and disk
+image integrity, not signing, notarisation or Gatekeeper acceptance. The
+Developer ID certificate never has to live in this public repo's secrets.
 
 ## Conventions that have bitten us
 
